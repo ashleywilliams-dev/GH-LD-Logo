@@ -11,12 +11,17 @@
      --logo-height times --lilly-scale. Adjust --gap to change spacing between them. */
   :root {
     --logo-height: 120px;
-    --lilly-scale: 1.4;
+    --lilly-scale: 1.25;
+    /* Distance from the bottom edge of each image to its text baseline, as a
+       fraction of image height. Used to line the two baselines up. */
+    --gh-baseline: 0.154;
+    --lilly-baseline: 0.3065;
     --gap: 48px;
   }
-  .row { display: flex; align-items: center; justify-content: center; gap: var(--gap); flex-wrap: nowrap; width: 100%; }
+  .row { display: flex; align-items: flex-end; justify-content: center; gap: var(--gap); flex-wrap: nowrap; width: 100%; }
   .logo { height: var(--logo-height); width: auto; max-width: 40vw; object-fit: contain; display: block; flex: 0 1 auto; }
-  .logo.lilly { height: calc(var(--logo-height) * var(--lilly-scale)); max-width: 55vw; }
+  .logo.lilly { height: calc(var(--logo-height) * var(--lilly-scale)); max-width: 55vw;
+    transform: translateY(calc(var(--logo-height) * var(--lilly-scale) * var(--lilly-baseline) - var(--logo-height) * var(--gh-baseline))); }
   @media (max-width: 700px) { :root { --gap: 20px; } }
 </style>
 </head>
