@@ -5,26 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gifthealth and LillyDirect</title>
 <style>
-  html, body { margin: 0; background: #ffffff; overflow: hidden; }
-  body { display: inline-flex; padding: 0; box-sizing: border-box; }
-  /* Set the logo height here. Gifthealth uses --logo-height; LillyDirect is
-     --logo-height times --lilly-scale. Adjust --gap to change spacing between them. */
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #ffffff; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+  /* The logos scale to fit whatever frame they are placed in, so no scrollbars.
+     The lockup is about 5.56 times wider than it is tall; the min() below picks
+     whichever of the frame's width or height is the limiting dimension. */
   :root {
-    --logo-height: 120px;
+    --logo-height: min(67vh, 12vw);
     --lilly-scale: 1.25;
     /* Distance from the bottom edge of each image to its text baseline, as a
        fraction of image height. Used to line the two baselines up. */
     --gh-baseline: 0.154;
     --lilly-baseline: 0.3065;
-    --gap: 48px;
+    --gap: calc(var(--logo-height) * 0.4);
   }
-  .row { display: inline-flex; align-items: flex-end; gap: var(--gap); flex-wrap: nowrap; width: max-content;
+  .row { display: inline-flex; align-items: flex-end; gap: var(--gap); flex-wrap: nowrap; width: max-content; max-width: 100%;
     /* room for the LillyDirect baseline shift so nothing is clipped */
     padding-bottom: calc(var(--logo-height) * var(--lilly-scale) * var(--lilly-baseline) - var(--logo-height) * var(--gh-baseline)); }
   .logo { height: var(--logo-height); width: auto; object-fit: contain; display: block; flex: 0 1 auto; }
   .logo.lilly { height: calc(var(--logo-height) * var(--lilly-scale));     transform: translateY(calc(var(--logo-height) * var(--lilly-scale) * var(--lilly-baseline) - var(--logo-height) * var(--gh-baseline))); }
-  @media (max-width: 700px) { :root { --gap: 20px; } }
-</style>
+  </style>
 </head>
 <body>
 <div class="row">
